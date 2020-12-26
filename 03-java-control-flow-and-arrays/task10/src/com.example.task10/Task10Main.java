@@ -1,7 +1,8 @@
 package com.example.task10;
-
-public class Task10Main {
-    public static void main(String[] args) {
+public class Task10Main
+{
+    public static void main(String[] args)
+    {
         //здесь вы можете вручную протестировать ваше решение, вызывая реализуемый метод и смотря результат
         // например вот так:
         /*
@@ -10,9 +11,19 @@ public class Task10Main {
          */
     }
 
-    static int numMin(int[] arr) {
-        //todo напишите здесь свою корректную реализацию этого метода, вместо существующей
-        return 0;
-    }
+    static int numMin(int[] arr)
+    {
+        int min = arr[0];
+        int index = 0;
 
+        for (int i = 1; i < arr.length; i++)
+        {
+            if (arr[i] <= min)
+            {
+                min = arr[i];
+                index = i;
+            }
+        }
+        return index;
+    }
 }
