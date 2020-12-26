@@ -1,33 +1,38 @@
 package com.example.task04;
 
-public class Line
+public class Point
 {
-    private Point p1;
-    private Point p2;
+    final int x;
+    final int y;
 
-    public Line(Point p1, Point p2)
+    Point()
     {
-        this.p1 = p1;
-        this.p2 = p2;
+        x = 0;
+        y = 0;
     }
 
-    public Point getP1()
+    Point(int x, int y)
     {
-        return p1;
+        this.x = x;
+        this.y = y;
     }
 
-    public Point getP2()
-    {
-        return p2;
-    }
+//    void print()
+//    {
+//        String pointToString = String.format("(%d, %d)", x, y);
+//        System.out.println(pointToString);
+//    }
 
-    public boolean isCollinearLine(Point p)
-    {
-        return (p1.x - p2.x) / (p1.y - p2.y) == (p1.x - p.x) / (p1.y - p.y);
-    }
+//
+//    double distance(Point point)
+//    {
+//        int dx = (int) Math.pow(point.x - x, 2);
+//        int dy = (int) Math.pow(point.y - y, 2);
+//        return Math.sqrt(dx + dy);
+//    }
 
     public String toString()
     {
-        return String.format("p1: %s \np2: %s", p1, p2);
+        return String.format("(%d, %d)", x, y);
     }
 }
