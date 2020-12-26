@@ -1,21 +1,23 @@
-package com.example.task13;
-
-public class Task13 {
-
-    public static char toUpperCase(char c) {
-
-        // TODO привести букву к верхнему регистру
-
-        return c;
+package com.example.task14;
+public class Task14
+{
+    public static int reverse(int value)
+    {
+        // TODO напишите здесь код, переставляющий цифры числа в обратном порядке
+        int new_value = 0;
+        while (value > 0) {
+            new_value = 10 * new_value + value % 10;
+            value /= 10;
+        }
+        return new_value;
     }
 
     public static void main(String[] args) {
         // Здесь вы можете вручную протестировать ваше решение, вызывая реализуемый метод и смотря результат
         // например вот так:
         /*
-        char result = solution('x');
+        int result = reverse(345);
         System.out.println(result);
          */
     }
-
 }
