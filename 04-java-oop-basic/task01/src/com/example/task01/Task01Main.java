@@ -1,19 +1,41 @@
 package com.example.task01;
 
-public class Task01Main {
-    public static void main(String[] args) {
-        Point p1 = new Point();
-        p1.x = 10;
-        p1.y = 45;
-        Point p2 = new Point();
-        p2.x = 78;
-        p2.y = 12;
+public class Point
+{
+    int x;
+    int y;
 
-        System.out.println("Point 1:");
-        p1.print();
-        System.out.println(p1);
-        System.out.println("Point 2:");
-        p2.print();
-        System.out.println(p2);
+    public String toString()
+    {
+        return String.format("(%d, %d)", x, y);
+    }
+
+    public Point(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    void flip()
+    {
+        int tmp = -this.x;
+        this.x = -this.y;
+        this.y = tmp;
+    }
+
+    double distance(Point point)
+    {
+        if (point == null)
+        {
+            throw new IllegalArgumentException("point не может быть null");
+        }
+        return Math.sqrt(Math.pow(this.x - point.x, 2) + Math.pow(this.y - point.y, 2));
+    }
+
+
+    void print()
+    {
+        String pointToString = String.format("(%d, %d)", x, y);
+        System.out.println(pointToString);
     }
 }
