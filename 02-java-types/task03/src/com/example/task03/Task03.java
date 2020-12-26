@@ -14,7 +14,5 @@ public class Task03
     {
         int result = getMetreFromCentimetre(395);
         System.out.println(result);
-         */
     }
-
 }
