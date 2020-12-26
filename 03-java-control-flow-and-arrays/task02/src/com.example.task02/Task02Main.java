@@ -1,7 +1,8 @@
 package com.example.task02;
-
-public class Task02Main {
-    public static void main(String[] args) {
+public class Task02Main
+{
+    public static void main(String[] args)
+    {
         //здесь вы можете вручную протестировать ваше решение, вызывая реализуемый метод и смотря результат
         // например вот так:
         /*
@@ -9,7 +10,28 @@ public class Task02Main {
          */
     }
 
-    static String getSeason(int monthNumber) {
-        return "";//todo напишите здесь свою корректную реализацию этого метода, вместо существующей
+    static String getSeason(int monthNumber)
+    {
+        switch (monthNumber)
+        {
+            case 1:
+            case 2:
+            case 12:
+                return "зима";
+            case 3:
+            case 4:
+            case 5:
+                return "весна";
+            case 6:
+            case 7:
+            case 8:
+                return "лето";
+            case 9:
+            case 10:
+            case 11:
+                return "осень";
+            default:
+                return "Ошибка";//todo напишите здесь свою корректную реализацию этого метода, вместо существующей
+        }
     }
 }
