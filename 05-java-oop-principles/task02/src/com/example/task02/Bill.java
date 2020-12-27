@@ -1,65 +1,36 @@
 package com.example.task02;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Счет к оплате
- */
-public class Bill {
-    private List<BillItem> items = new ArrayList<>();
-
-    /**
-     * Добавляет товар в корзину
-     *
-     * @param item товар
-     * @param amount количество
-     */
-    public void add(Item item, int amount) {
-        boolean found = false;
-        for (BillItem billItem: items) {
-            if (billItem.item.equals(item)) {
-                found = true;
-                billItem.amount += amount;
-                break;
-            }
-        }
-        if (!found) {
-            items.add(new BillItem(item, amount));
+public class DiscountBill extends Bill
+{
+    private final long discount;
+    /** @param discount процент скидки в промежутке [0;100] */
+    public DiscountBill(long discount)
+    {
+        if (discount >= 0 && discount <= 100)
+        {
+            this.discount = discount;
+        } else
+            {
+            throw new IllegalArgumentException("аргумент вне промежутка [0;100]");
         }
     }
 
-    /**
-     * Подсчитывает общую сумму покупки
-     *
-     * @return общую стоимость покупки
-     */
-    public long getPrice() {
-        long price = 0;
-        for (BillItem item: items) {
-            price += item.item.getPrice() * item.amount;
-        }
-        return price;
+    /** @return процент скидки */
+    public long getDiscount()
+    {
+        return discount;
     }
+
+    /** @return разница между суммой и суммой со скидкой */
+    public long getDiscountAbsolut()
+    {
+        return (long)(super.getPrice() * (discount/100d));
+    }
+
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("Счет к оплате\n");
-        for(BillItem item : items) {
-            sb.append(item.item.getName()).append('(').append(item.amount).append(')');
-            sb.append('\n');
-        }
-        sb.append("Сумма к оплате: ").append(getPrice());
-        return sb.toString();
-    }
-
-    private static class BillItem {
-        final Item item;
-        int amount;
-
-        BillItem(Item item, int amount) {
-            this.item = item;
-            this.amount = amount;
-        }
+    public long getPrice()
+    {
+        return (super.getPrice() - getDiscountAbsolut());
     }
 }
