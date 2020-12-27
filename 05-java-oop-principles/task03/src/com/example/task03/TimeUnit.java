@@ -1,31 +1,37 @@
 package com.example.task03;
 
-/**
- * Интерфейс для интервалов времени в определенных единицах
- */
-public interface TimeUnit {
+public class Hours implements TimeUnit
+{
+    private final long amount;
 
-    /**
-     * Возвращает продолжительность текущего интервала, пересчитанного в миллисекундах.
-     *
-     * @return количество миллисекунд в текущем интервале
-     */
-    long toMillis();
+    public Hours(long amount)
+    {
+        if (amount < 0)
+            throw new IllegalArgumentException("amount must be >= 0");
+        this.amount = amount;
+    }
 
-    /**
-     * Возвращает продолжительность текущего интервала, пересчитанного в секундах.
-     * При необходимости округлять по обычным правилам округления (число, меньшее 0.5 переходит в 0, большее или равное - в 1)
-     *
-     * @return количество секунд в текущем интервале
-     */
-    long toSeconds();
+    @Override
+    public long toMillis()
+    {
+        return this.toSeconds() * 1000;
+    }
 
-    /**
-     * Возвращает продолжительность текущего интервала, пересчитанного в минутах.
-     * При необходимости округлять по обычным правилам округления (число, меньшее 0.5 переходит в 0, большее или равное - в 1)
-     *
-     * @return количество минут в текущем интервале
-     */
-    long toMinutes();
+    @Override
+    public long toSeconds()
+    {
+        return this.toMinutes() * 60;
+    }
 
+    @Override
+    public long toMinutes()
+    {
+        return this.amount * 60;
+    }
+
+    @Override
+    public long toHours()
+    {
+        return this.amount;
+    }
 }
