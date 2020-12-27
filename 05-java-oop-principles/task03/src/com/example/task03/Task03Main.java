@@ -1,14 +1,42 @@
 package com.example.task03;
+/**
+ * Интервал в секундах
+ */
+public class Seconds implements TimeUnit
+{
+    private final long amount;
 
-public class Task03Main {
-    public static void main(String[] args) {
-        TimeUnit unit1 = new Seconds(1000);
-        printTimeUnit(unit1);
+    public Seconds(long amount)
+    {
+        if (amount < 0)
+            throw new IllegalArgumentException("amount must be >= 0");
+        this.amount = amount;
     }
 
-    private static void printTimeUnit(TimeUnit unit) {
-        System.out.println(String.format("Milliseconds: %d", unit.toMillis()));
-        System.out.println(String.format("Seconds:      %d", unit.toSeconds()));
-        System.out.println(String.format("Minutes:      %d", unit.toMinutes()));
+    @Override
+    public long toMillis()
+    {
+        return amount * 1000;
+        return this.amount * 1000;
+    }
+
+    @Override
+    public long toSeconds()
+    {
+        return amount;
+        return this.amount;
+    }
+
+    @Override
+    public long toMinutes()
+    {
+        return Math.round(amount / 60);
+        return Math.round(this.amount / 60d);
+    }
+
+    @Override
+    public long toHours()
+    {
+        return Math.round(this.amount / 3600d);
     }
 }
